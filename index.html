@@ -59,8 +59,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 7%;
-    background: rgba(255, 255, 255, 0.92);
+    padding: 12px 7%;
+    background: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
@@ -71,18 +71,27 @@
   .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 26px;
+    gap: 12px;
+    font-size: 22px;
     font-weight: 800;
+  }
+  .logo-img {
+    height: 48px;
+    width: auto;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+    transition: transform 0.2s ease;
+  }
+  .logo-img:hover {
+    transform: scale(1.02);
+  }
+  .logo-text {
     background: linear-gradient(125deg, #0a4e6e, #008b9f);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-  }
-  .logo i {
-    font-size: 32px;
-    color: #0a7e8c;
-    background: none;
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.3px;
   }
   nav ul {
     display: flex;
@@ -103,31 +112,38 @@
     padding-bottom: 4px;
   }
 
-  /* highlighted price ribbon (top) */
+  /* highlighted price ribbon (top) - UPDATED contrast */
   .price-highlight {
     background: #0a2e42;
-    color: #ffe6b3;
+    color: #ffffff;
     text-align: center;
-    padding: 10px 20px;
+    padding: 12px 20px;
     font-weight: 700;
     font-size: 1rem;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     border-bottom: 1px solid #ffb347;
-    background: linear-gradient(95deg, #07212e, #0a364f);
+    background: linear-gradient(95deg, #041f2c, #0e3f57);
   }
   .price-highlight span {
     background: #ffcc33;
-    color: #0a2a38;
-    padding: 5px 14px;
+    color: #0a1e28;
+    padding: 6px 18px;
     border-radius: 60px;
-    margin: 0 8px;
+    margin: 0 10px;
     font-weight: 800;
-    box-shadow: 0 0 8px #ffcd7e;
-    font-size: 1.25rem;
+    box-shadow: 0 0 12px #ffae3c;
+    font-size: 1.35rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .price-highlight span i {
+    font-size: 1.1rem;
+    color: #1f4d3c;
   }
   .price-highlight i {
     margin-right: 8px;
-    color: #ffb347;
+    color: #ffcd7e;
   }
 
   /* HERO hacking style */
@@ -391,6 +407,8 @@
     .week ul li { width: 100%; }
     nav ul { gap: 20px; }
     .section-title { font-size: 36px; }
+    .logo-text { font-size: 1rem; }
+    .logo-img { height: 38px; }
   }
   @media (max-width: 580px) {
     .hero { flex-direction: column; text-align: center; }
@@ -402,17 +420,19 @@
 <body>
 <div class="cyber-bg"></div>
 
-<!-- Price highlight at top (eye-catching) -->
+<!-- Price highlight at top: fixed visibility for ₹499 and removed "Full Master Program + Internship Track" phrase -->
 <div class="price-highlight">
   <i class="fas fa-bolt"></i> LIMITED INTRO OFFER • TOTAL INVESTMENT 
   <span><i class="fas fa-rupee-sign"></i> 499/- only</span> 
-  <i class="fas fa-shield-haltered"></i> (Full Master Program)
+  <i class="fas fa-shield-haltered"></i> 
 </div>
 
 <nav>
   <div class="logo">
-    <i class="fas fa-skull"></i> 
-    <span>HACK<span style="color:#ff8c42;">>SECURE</span></span>
+    <!-- Custom logo image (tc logo.png) as per requirement : placed on top left corner -->
+    <img src="logo.png" alt="TC Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/400x100?text=TC+Logo';">
+    <!-- Replaced HACK>SECURE with THINKCHAMP PVT LTD -->
+    <span class="logo-text">THINKCHAMP PVT LTD</span>
   </div>
   <ul>
     <li><a href="#course"><i class="fas fa-terminal"></i> Course</a></li>
