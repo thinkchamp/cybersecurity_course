@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>⚡ Ethical Hacking & Cyber Security Mastery | Live Program</title>
+<!-- Google Fonts & Font Awesome 6 -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(145deg, #fefefe 0%, #f1f7fd 100%);
+    color: #0a1927;
+    overflow-x: hidden;
+  }
+
+  /* terminal / hacking style background motifs */
+  .cyber-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+    opacity: 0.3;
+  }
+  .cyber-bg::before {
+    content: "❯❯_ 0x7F3A  // SECURE SHELL // 0x00FF  // KALI ROOT // 192.168.1.1";
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 11px;
+    font-family: monospace;
+    color: #0a5c7e;
+    opacity: 0.5;
+    white-space: pre;
+  }
+  .cyber-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(0deg, rgba(0, 160, 200, 0.03) 0px, rgba(0,160,200,0.03) 2px, transparent 2px, transparent 8px),
+                      repeating-linear-gradient(90deg, rgba(0,120,180,0.02) 0px, rgba(0,120,180,0.02) 1px, transparent 1px, transparent 12px);
+  }
+
+  /* GLASS NAVIGATION */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 7%;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid rgba(0, 150, 200, 0.3);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.02);
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 26px;
+    font-weight: 800;
+    background: linear-gradient(125deg, #0a4e6e, #008b9f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .logo i {
+    font-size: 32px;
+    color: #0a7e8c;
+    background: none;
+  }
+  nav ul {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  nav ul li a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #1a4e6e;
+    transition: 0.2s;
+    font-size: 0.95rem;
+    letter-spacing: -0.2px;
+  }
+  nav ul li a:hover {
+    color: #0a8eb5;
+    border-bottom: 2px solid #0a8eb5;
+    padding-bottom: 4px;
+  }
+
+  /* highlighted price ribbon (top) */
+  .price-highlight {
+    background: #0a2e42;
+    color: #ffe6b3;
+    text-align: center;
+    padding: 10px 20px;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #ffb347;
+    background: linear-gradient(95deg, #07212e, #0a364f);
+  }
+  .price-highlight span {
+    background: #ffcc33;
+    color: #0a2a38;
+    padding: 5px 14px;
+    border-radius: 60px;
+    margin: 0 8px;
+    font-weight: 800;
+    box-shadow: 0 0 8px #ffcd7e;
+    font-size: 1.25rem;
+  }
+  .price-highlight i {
+    margin-right: 8px;
+    color: #ffb347;
+  }
+
+  /* HERO hacking style */
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 7% 60px;
+    flex-wrap: wrap;
+    gap: 48px;
+  }
+  .hero-content {
+    flex: 1;
+    min-width: 300px;
+  }
+  .hero-content h1 {
+    font-size: 58px;
+    font-weight: 800;
+    line-height: 1.2;
+    background: linear-gradient(130deg, #052a3b, #0a6c8c, #008b8b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 24px;
+  }
+  .hero-content h1 span {
+    background: linear-gradient(145deg, #0a6680, #00aacc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+  }
+  .hero-content p {
+    font-size: 1.12rem;
+    color: #235e7c;
+    margin-bottom: 34px;
+    line-height: 1.55;
+    border-left: 3px solid #1f9ebe;
+    padding-left: 20px;
+    max-width: 620px;
+  }
+  .hero-image {
+    flex: 1;
+    text-align: center;
+  }
+  .hero-image img {
+    width: 100%;
+    max-width: 460px;
+    filter: drop-shadow(0 20px 30px rgba(0, 110, 130, 0.25));
+    animation: glitchFloat 5s ease-in-out infinite;
+  }
+  @keyframes glitchFloat {
+    0% { transform: translateY(0px) rotate(0deg);}
+    50% { transform: translateY(-12px) rotate(0.5deg);}
+    100% { transform: translateY(0px) rotate(0deg);}
+  }
+
+  .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  .btn {
+    padding: 14px 34px;
+    border-radius: 40px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+  }
+  .primary-btn {
+    background: linear-gradient(95deg, #0a5f7a, #0c859e);
+    color: white;
+    box-shadow: 0 10px 18px -8px #0a5f7a80;
+  }
+  .primary-btn:hover {
+    transform: translateY(-4px);
+    background: linear-gradient(95deg, #0c6f8f, #0f9ebe);
+    box-shadow: 0 18px 25px -12px #0a7c9e;
+  }
+  .secondary-btn {
+    background: rgba(10, 90, 110, 0.08);
+    border: 1.5px solid #0a7c8e;
+    color: #0a637e;
+  }
+  .secondary-btn:hover {
+    background: rgba(0, 150, 170, 0.12);
+    transform: translateY(-3px);
+  }
+
+  section {
+    padding: 70px 7%;
+  }
+  .section-title {
+    text-align: center;
+    font-size: 44px;
+    font-weight: 800;
+    margin-bottom: 55px;
+    color: #083c52;
+    letter-spacing: -0.3px;
+    position: relative;
+  }
+  .section-title:after {
+    content: "";
+    display: block;
+    width: 110px;
+    height: 4px;
+    background: linear-gradient(90deg, #0c8aa8, #ffb347);
+    margin: 14px auto 0;
+    border-radius: 4px;
+  }
+  .section-title i {
+    margin-right: 12px;
+    color: #0c8aa8;
+  }
+
+  /* CARDS - matrix / hacker style glow */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+  }
+  .card {
+    background: #ffffffea;
+    backdrop-filter: blur(2px);
+    border-radius: 28px;
+    padding: 28px 24px;
+    transition: 0.3s;
+    border: 1px solid #bbe4f0;
+    box-shadow: 0 12px 24px -14px rgba(0, 90, 110, 0.1);
+  }
+  .card:hover {
+    transform: translateY(-8px);
+    border-color: #18a0c2;
+    box-shadow: 0 24px 35px -12px rgba(0, 150, 170, 0.25);
+  }
+  .card h3 {
+    font-size: 1.65rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #0f6c88;
+  }
+  .card h3 i {
+    font-size: 2rem;
+    color: #0e7c9e;
+  }
+
+  /* weeks - ethical hacking / terminal style */
+  .week {
+    background: #ffffffef;
+    border-radius: 28px;
+    padding: 26px 32px;
+    margin-bottom: 28px;
+    transition: 0.2s;
+    border-left: 7px solid #0c8aa8;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.03);
+  }
+  .week h2 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #0b5775;
+  }
+  .week h2 i {
+    font-size: 1.9rem;
+    color: #0c8aa8;
+  }
+  .week ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 40px;
+    list-style: none;
+  }
+  .week ul li {
+    width: calc(50% - 40px);
+    position: relative;
+    padding-left: 28px;
+    font-weight: 500;
+    color: #1f5d7a;
+  }
+  .week ul li:before {
+    content: "❯";
+    position: absolute;
+    left: 0;
+    color: #ff8c42;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
+  /* internship banner - cyber security style */
+  .banner {
+    margin-top: 55px;
+    background: linear-gradient(115deg, #e2f0f5, #cdeef5);
+    border-radius: 42px;
+    padding: 44px 30px;
+    text-align: center;
+    border: 1px solid #86ccdd;
+    box-shadow: 0 16px 28px -12px rgba(0,100,120,0.12);
+  }
+  .banner h2 i {
+    color: #e68a2e;
+  }
+  .banner h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0a5c78;
+  }
+  .banner p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 16px auto 0;
+  }
+
+  .cta {
+    text-align: center;
+    background: #ffffffd9;
+    backdrop-filter: blur(6px);
+    border-radius: 56px;
+    margin: 20px 7% 70px;
+    padding: 52px 32px;
+    border: 1px solid rgba(10, 140, 160, 0.3);
+  }
+  .cta h2 {
+    font-size: 46px;
+    font-weight: 800;
+    background: linear-gradient(120deg, #063c52, #0c98b3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .cta p {
+    font-size: 1.2rem;
+    color: #2c607c;
+    margin: 20px auto 32px;
+    max-width: 680px;
+  }
+
+  footer {
+    background: #e0eff5;
+    text-align: center;
+    padding: 32px;
+    font-weight: 500;
+    color: #1a5b78;
+    border-top: 2px solid #aacfdf;
+    font-family: monospace;
+    letter-spacing: 0.3px;
+  }
+  @media (max-width: 800px) {
+    .hero h1 { font-size: 44px; }
+    .week ul li { width: 100%; }
+    nav ul { gap: 20px; }
+    .section-title { font-size: 36px; }
+  }
+  @media (max-width: 580px) {
+    .hero { flex-direction: column; text-align: center; }
+    .btn-group { justify-content: center; }
+    .hero-content p { margin-left: auto; margin-right: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="cyber-bg"></div>
+
+<!-- Price highlight at top (eye-catching) -->
+<div class="price-highlight">
+  <i class="fas fa-bolt"></i> LIMITED INTRO OFFER • TOTAL INVESTMENT 
+  <span><i class="fas fa-rupee-sign"></i> 499/- only</span> 
+  <i class="fas fa-shield-haltered"></i> (Full Master Program)
+</div>
+
+<nav>
+  <div class="logo">
+    <i class="fas fa-skull"></i> 
+    <span>HACK<span style="color:#ff8c42;">>SECURE</span></span>
+  </div>
+  <ul>
+    <li><a href="#course"><i class="fas fa-terminal"></i> Course</a></li>
+    <li><a href="#features"><i class="fas fa-crown"></i> Features</a></li>
+    <li><a href="#curriculum"><i class="fas fa-bug"></i> Curriculum</a></li>
+    <li><a href="#enroll"><i class="fas fa-user-secret"></i> Enroll</a></li>
+  </ul>
+</nav>
+
+<!-- Hero Section - Ethical Hacking Theme -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Become a <span>Ethical Hacker</span><br> & Cyber Guardian</h1>
+    <p>🔐 Master Pentesting, Network Security, Kali Linux, Web App Hacking, Digital Forensics, Cloud Security & Real-time CTF challenges. Live practical labs + AI Mock Interviews + Internship guarantee for top performers.</p>
+    <div class="btn-group">
+      <a href="https://forms.gle/eqiXR1gmLHuUrPNg8" target="_blank" class="btn primary-btn"><i class="fas fa-bug"></i> Enroll Now — ₹499</a>
+      <a href="#curriculum" class="btn secondary-btn"><i class="fas fa-code-branch"></i> Explore Modules</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <!-- ethical hacking / hacker with hood & matrix style vector (highly relevant) -->
+    <img src="https://cdn-icons-png.flaticon.com/512/2892/2892879.png" alt="Ethical Hacking Expert" style="filter: drop-shadow(0 12px 16px rgba(0,150,160,0.3));">
+  </div>
+</section>
+
+<!-- Course info cards with hacking icons -->
+<section id="course">
+  <h1 class="section-title"><i class="fas fa-skull-crossbones"></i> Program Blueprint</h1>
+  <div class="grid">
+    <div class="card"><h3><i class="fas fa-hat-wizard"></i> Course Name</h3><p>Cyber Security & Ethical Hacking Master Program</p></div>
+    <div class="card"><h3><i class="fas fa-calendar-week"></i> Starting Date</h3><p>May 20th (Live)</p></div>
+    <div class="card"><h3><i class="fas fa-laptop-code"></i> Mode</h3><p>Online Live + Recorded Sessions</p></div>
+    <div class="card"><h3><i class="fas fa-hourglass-half"></i> Duration</h3><p>2 Months intensive</p></div>
+    <div class="card"><h3><i class="fas fa-clock"></i> Class Timing</h3><p>7 PM - 8 PM (IST)</p></div>
+    <div class="card"><h3><i class="fas fa-tag"></i> Course Fee</h3><p><strong style="font-size:1.6rem; color:#0a7c8e;">₹499/-</strong> <span style="background:#ffd966; padding:2px 8px; border-radius:40px;">limited</span></p></div>
+  </div>
+</section>
+
+<!-- Features: cyber security tools & ethical hacking emphasis -->
+<section id="features">
+  <h1 class="section-title"><i class="fas fa-microchip"></i> Ethical Hacking Arsenal</h1>
+  <div class="grid">
+    <div class="card"><h3><i class="fas fa-video"></i> Live + Recorded Classes</h3><p>Attend live interactive classes and also get access to recorded sessions for revision anytime.</p></div>
+    <div class="card"><h3><i class="fas fa-robot"></i> AI Mock Interviews</h3><p>Practice real-time AI based mock interviews to improve confidence and crack cyber security interviews.</p></div>
+    <div class="card"><h3><i class="fas fa-tasks"></i> Assignments & Quizzes</h3><p>Daily assignments, quizzes and practical exercises to improve your hands-on skills.</p></div>
+    <div class="card"><h3><i class="fas fa-briefcase"></i> Internship Opportunity</h3><p>Top performers in the course are eligible for internship opportunities based on performance.</p></div>
+    <div class="card"><h3><i class="fas fa-flask"></i> Real-Time Practical Labs</h3><p>Hands-on labs using Kali Linux, Nmap, Burp Suite, Wireshark and other security tools.</p></div>
+    <div class="card"><h3><i class="fas fa-chart-line"></i> Certification Guidance</h3><p>Get career roadmap, resume guidance, portfolio building and certification support.</p></div>
+  </div>
+</section>
+
+<!-- Curriculum 8 weeks + hacking imagery -->
+<section id="curriculum">
+  <h1 class="section-title"><i class="fas fa-code"></i> LIVE Hacking Roadmap</h1>
+  <div class="week"><h2><i class="fas fa-shield-haltered"></i> Week 1 - Introduction to Cyber Security</h2><ul><li>Importance of Cyber Security</li><li>Types of Hackers</li><li>Malware, Virus & Ransomware</li><li>Password Security & MFA</li><li>Phishing & Banking Scam Awareness</li></ul></div>
+  <div class="week"><h2><i class="fas fa-network-wired"></i> Week 2 - Networking Fundamentals</h2><ul><li>LAN, WAN, MAN & Topologies</li><li>IP Address, MAC Address & DNS</li><li>HTTP, HTTPS, FTP & SSH</li><li>Nmap & Angry IP Scanner</li><li>Practical Network Scanning</li></ul></div>
+  <div class="week"><h2><i class="fab fa-linux"></i> Week 3 - Linux & Kali Linux</h2><ul><li>Kali Linux Installation</li><li>Linux Commands</li><li>User Management & Permissions</li><li>Networking Commands</li><li>Kali Linux Practical Labs</li></ul></div>
+  <div class="week"><h2><i class="fas fa-eye"></i> Week 4 - Ethical Hacking Fundamentals</h2><ul><li>Reconnaissance & Footprinting</li><li>Whois & DNS Enumeration</li><li>Google Dorking</li><li>Vulnerability Scanning</li><li>WiFi Security Awareness</li></ul></div>
+  <div class="week"><h2><i class="fas fa-globe"></i> Week 5 - Web Application Security</h2><ul><li>OWASP Top 10</li><li>SQL Injection Basics</li><li>Cross Site Scripting</li><li>DVWA Demonstrations</li><li>Burp Suite & OWASP ZAP</li></ul></div>
+  <div class="week"><h2><i class="fas fa-mobile-alt"></i> Week 6 - Malware & Mobile Security</h2><ul><li>Windows Security Basics</li><li>Android & APK Risks</li><li>Cyber RAT Awareness</li><li>Malware Analysis</li><li>VirusTotal Awareness</li></ul></div>
+  <div class="week"><h2><i class="fas fa-fingerprint"></i> Week 7 - Digital Forensics</h2><ul><li>Cyber Crime Investigation</li><li>Browser History Analysis</li><li>OSINT & Metadata</li><li>FTK Imager & Autopsy</li><li>Real-world Case Studies</li></ul></div>
+  <div class="week"><h2><i class="fas fa-cloud-upload-alt"></i> Week 8 - SOC, Cloud & Career Guidance</h2><ul><li>SIEM & Splunk Basics</li><li>AWS Security Awareness</li><li>Python for Cyber Security</li><li>Resume & LinkedIn Optimization</li><li>Mini Project & CTF Challenge</li></ul></div>
+
+  <div class="banner">
+    <h2><i class="fas fa-skull"></i> ⚡ INTERNSHIP + LIVE PROJECT TRACK ⚡</h2>
+    <p>Top performers will be shortlisted for internship opportunities based on assignments, quizzes, project performance and practical hacking skills. Real-world security operations.</p>
+  </div>
+</section>
+
+<!-- CTA Enrollment section -->
+<section class="cta" id="enroll">
+  <h2>Start Your Ethical Hacking Journey 🦾</h2>
+  <p>Learn real-world penetration testing, earn certification guidance, appear in AI mock interviews and grab internship chance. Only ₹499 for complete master program.</p>
+  <a href="https://forms.gle/eqiXR1gmLHuUrPNg8" target="_blank" class="btn primary-btn" style="background: linear-gradient(105deg,#0a6885,#0e9ec2);"><i class="fas fa-terminal"></i> Register Now — Secure Your Spot</a>
+</section>
+
+<footer>
+  <i class="fas fa-copyright"></i> 2026 Cyber Security & Ethical Hacking Master Program • <i class="fas fa-shield-virus"></i> practical labs •<i class="fas fa-hat-wizard"></i> hack the mindset
+</footer>
+</body>
+</html>
